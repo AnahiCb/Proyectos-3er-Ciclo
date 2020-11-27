@@ -41,9 +41,7 @@ public class ControladorMatrimonio extends Controlador<Matrimonio> {
             return temp.get(temp.size() - 1).getCodigo() + 1;
         } else {
             return 1;
-        }
-
-        
+        }       
     }
     
 }

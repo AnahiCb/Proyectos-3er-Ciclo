@@ -5,17 +5,22 @@
  */
 package ec.edu.ups.vista;
 
+import ec.edu.ups.controlador.ControladorAutoridadCivil;
+import javax.swing.JOptionPane;
 /**
  *
  * @author Anahi
  */
 public class VentanaIniciarSesion extends javax.swing.JInternalFrame {
 
-    /**
-     * Creates new form VentanaIniciarSesion
-     */
+    private VentanaPrincipal ventanaPrincipal;
+    private ControladorAutoridadCivil controladorAutoridad;
+    
     public VentanaIniciarSesion() {
         initComponents();
+        this.ventanaPrincipal=ventanaPrincipal;
+        this.controladorAutoridad=controladorAutoridad;
+        
     }
 
     /**
@@ -42,6 +47,11 @@ public class VentanaIniciarSesion extends javax.swing.JInternalFrame {
         txtCorreo.setToolTipText("");
 
         btnIniciarS.setText("Iniciar Sesión");
+        btnIniciarS.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnIniciarSActionPerformed(evt);
+            }
+        });
 
         jButton2.setText("Cancelar");
 
@@ -95,6 +105,35 @@ public class VentanaIniciarSesion extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btnIniciarSActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIniciarSActionPerformed
+        String autoridad = txtCorreo.getText();
+        String contrasenia = "";
+        char[] contrasenia1;
+        for (int i = 0; i < pass1.length; i++) {
+            pass = pass + pass1[i];
+        }
+
+        if (controladorUsuario.iniciarSesion(usuario, pass)) {
+            ventanaPrincipal.getBtnMenuIniciarSesion().setVisible(false);
+            ventanaPrincipal.getBtnCerrarSesionMenu().setVisible(true);
+            ventanaPrincipal.getGestionMenu().setVisible(true);
+            
+            ventanaPrincipal.getBtnSalirMenu().setVisible(false);
+            ventanaPrincipal.getBtnRegistrarPersonaMenu().setVisible(false);
+            ventanaPrincipal.getGestionMenu().setVisible(true);
+
+            this.dispose();
+            JOptionPane.showMessageDialog(this, "Usted ha iniciado sesión con éxito");
+        } else {
+            
+            JOptionPane.showMessageDialog(this, "Datos incorrectos");
+            Limpiar();
+        }
+    }//GEN-LAST:event_btnIniciarSActionPerformed
+    public void Limpiar() {
+        txtCorreo.setText("");
+        txtPass.setText("");
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnIniciarS;

@@ -9,12 +9,12 @@ package ec.edu.ups.vista;
  *
  * @author Anahi
  */
-public class VentanaGestionPersona extends javax.swing.JInternalFrame {
+public class VentanaGestionAutoridad extends javax.swing.JInternalFrame {
 
     /**
-     * Creates new form VentanaGestionPersona
+     * Creates new form VentanaGestionAutoridad
      */
-    public VentanaGestionPersona() {
+    public VentanaGestionAutoridad() {
         initComponents();
     }
 
@@ -28,30 +28,38 @@ public class VentanaGestionPersona extends javax.swing.JInternalFrame {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
+        jTextField3 = new javax.swing.JTextField();
+        jLabel8 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
+        txtDireccion = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
+        txtFechaN = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
-        txtCedula = new javax.swing.JTextField();
-        txtNombre = new javax.swing.JTextField();
-        jTextField3 = new javax.swing.JTextField();
-        txtDireccion = new javax.swing.JTextField();
-        txtFechaN = new javax.swing.JTextField();
         txtGenero = new javax.swing.JTextField();
+        jLabel6 = new javax.swing.JLabel();
         cbxGenero = new javax.swing.JComboBox<>();
+        jLabel7 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblGestion = new javax.swing.JTable();
-        jLabel8 = new javax.swing.JLabel();
+        jButton4 = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
         jButton5 = new javax.swing.JButton();
+        jButton3 = new javax.swing.JButton();
+        txtCedula = new javax.swing.JTextField();
+        txtNombre = new javax.swing.JTextField();
+        jLabel9 = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
+        jLabel11 = new javax.swing.JLabel();
+        txtCargo = new javax.swing.JTextField();
+        txtCorreo = new javax.swing.JTextField();
+        txtContraseña = new javax.swing.JTextField();
 
         jLabel1.setText("Cédula:");
+
+        jLabel8.setText("Gestión Persona");
 
         jLabel2.setText("Nombre:");
 
@@ -63,51 +71,75 @@ public class VentanaGestionPersona extends javax.swing.JInternalFrame {
 
         jLabel6.setText("Género:");
 
-        jLabel7.setText("Estado Civil:");
-
         cbxGenero.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "-----Seleccionar----", "Hombre", "Mujer", " " }));
+
+        jLabel7.setText("Estado Civil:");
 
         tblGestion.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null}
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null}
             },
             new String [] {
-                "Cedula", "Nombre", "Apellido", "Dirección", "FechaNacimiento", "Género", "EstadoCivil"
+                "Cedula", "Nombre", "Apellido", "Dirección", "FechaNacimiento", "Género", "EstadoCivil", "Cargo"
             }
         ));
         jScrollPane1.setViewportView(tblGestion);
+
+        jButton4.setText("Listar");
+
+        jButton1.setText("Crear");
+
+        jButton2.setText("Actualizar");
+
+        jButton5.setText("Cancelar");
+
+        jButton3.setText("Eliminar");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 593, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 593, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(38, 38, 38)
+                        .addComponent(jButton1)
+                        .addGap(30, 30, 30)
+                        .addComponent(jButton2)
+                        .addGap(31, 31, 31)
+                        .addComponent(jButton3)
+                        .addGap(41, 41, 41)
+                        .addComponent(jButton4)
+                        .addGap(47, 47, 47)
+                        .addComponent(jButton5)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(26, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton1)
+                    .addComponent(jButton2)
+                    .addComponent(jButton3)
+                    .addComponent(jButton4)
+                    .addComponent(jButton5))
+                .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
-        jLabel8.setText("Gestión Persona");
+        jLabel9.setText("Cargo:");
 
-        jButton1.setText("Crear");
+        jLabel10.setText("Correo:");
 
-        jButton2.setText("Actualizar");
-
-        jButton3.setText("Eliminar");
-
-        jButton4.setText("Listar");
-
-        jButton5.setText("Cancelar");
+        jLabel11.setText("Contraseña:");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -119,44 +151,36 @@ public class VentanaGestionPersona extends javax.swing.JInternalFrame {
                         .addContainerGap()
                         .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
+                        .addGap(158, 158, 158)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(158, 158, 158)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(jLabel5)
-                                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                                .addComponent(jLabel4)
-                                                .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.LEADING)
-                                                .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.LEADING))
-                                            .addComponent(jLabel6)
-                                            .addComponent(jLabel7)
-                                            .addComponent(jLabel1))
-                                        .addGap(52, 52, 52)
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                            .addComponent(txtCedula)
-                                            .addComponent(txtNombre)
-                                            .addComponent(jTextField3)
-                                            .addComponent(txtDireccion)
-                                            .addComponent(txtFechaN)
-                                            .addComponent(cbxGenero, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                            .addComponent(txtGenero, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGap(95, 95, 95)
-                                        .addComponent(jLabel8)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 138, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                    .addComponent(jLabel5)
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                        .addComponent(jLabel4)
+                                        .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.LEADING))
+                                    .addComponent(jLabel6)
+                                    .addComponent(jLabel7)
+                                    .addComponent(jLabel1)
+                                    .addComponent(jLabel9)
+                                    .addComponent(jLabel10)
+                                    .addComponent(jLabel11))
+                                .addGap(52, 52, 52)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addComponent(txtCedula)
+                                    .addComponent(txtNombre)
+                                    .addComponent(jTextField3)
+                                    .addComponent(txtDireccion)
+                                    .addComponent(txtFechaN)
+                                    .addComponent(cbxGenero, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(txtGenero, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 156, Short.MAX_VALUE)
+                                    .addComponent(txtCargo, javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(txtCorreo, javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(txtContraseña, javax.swing.GroupLayout.Alignment.LEADING)))
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(49, 49, 49)
-                                .addComponent(jButton1)
-                                .addGap(30, 30, 30)
-                                .addComponent(jButton2)
-                                .addGap(31, 31, 31)
-                                .addComponent(jButton3)
-                                .addGap(41, 41, 41)
-                                .addComponent(jButton4)
-                                .addGap(47, 47, 47)
-                                .addComponent(jButton5)))
+                                .addGap(95, 95, 95)
+                                .addComponent(jLabel8)))
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
@@ -193,13 +217,18 @@ public class VentanaGestionPersona extends javax.swing.JInternalFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel7)
                     .addComponent(txtGenero, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 33, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
-                    .addComponent(jButton2)
-                    .addComponent(jButton3)
-                    .addComponent(jButton4)
-                    .addComponent(jButton5))
+                    .addComponent(jLabel9)
+                    .addComponent(txtCargo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtCorreo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel10))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 16, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel11)
+                    .addComponent(txtContraseña, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
@@ -216,6 +245,8 @@ public class VentanaGestionPersona extends javax.swing.JInternalFrame {
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -223,11 +254,15 @@ public class VentanaGestionPersona extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextField jTextField3;
     private javax.swing.JTable tblGestion;
+    private javax.swing.JTextField txtCargo;
     private javax.swing.JTextField txtCedula;
+    private javax.swing.JTextField txtContraseña;
+    private javax.swing.JTextField txtCorreo;
     private javax.swing.JTextField txtDireccion;
     private javax.swing.JTextField txtFechaN;
     private javax.swing.JTextField txtGenero;

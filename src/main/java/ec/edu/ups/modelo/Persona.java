@@ -127,8 +127,5 @@ public class Persona {
                 + ", genero=" + genero + ", fechaNacimiento=" 
                 + fechaNacimiento + ", tipo=" + tipo + ", estadoCivil=" 
                 + estadoCivil + '}';
-    }
-
-    
-    
+    }  
 }

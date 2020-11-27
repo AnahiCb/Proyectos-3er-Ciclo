@@ -5,16 +5,39 @@
  */
 
 package ec.edu.ups.vista;
-
+import ec.edu.ups.controlador.*;
+import javax.swing.JDesktopPane;
+import javax.swing.JMenu;
+import javax.swing.JMenuBar;
+import javax.swing.JMenuItem;
 /**
  *
  * @author Anahi
  */
 public class VentanaPrincipal extends javax.swing.JFrame {
-
-    /** Creates new form VentanaPrincipal */
+    private VentanaIniciarSesion ventanaIniciarSesion;
+    private VentanaGestionPersona ventanaGestionPersona;
+    private VentanaMatrimonio ventanaMatrimonio;
+    private VentanaCrearAutoridad ventanaCrearAutoridad;
+    private VentanaGestionAutoridad ventanaGestionAutoridad;
+    
+    private controladorPersona controladorPersona;
+    private controladorAutoridadCivil controladorAutoridadCivil;
+    private controladorMatrimonio controladorMatrimonio;
+    
     public VentanaPrincipal() {
         initComponents();
+        gestionMenu.setVisible(false);
+        btnCerrarSesionMenu.setVisible(false);
+        controladorPersona= new controladorPersona();
+        controladorAutoridadCivil=new controladorAutoridadCivil();
+        controladorMatrimonio = new controladorMatrimonio();
+        
+        ventanaIniciarSesion = new VentanaIniciarSesion(this,controladorAutoridad);
+        gestionPersona = new VentanaGestionPersona(controladorPersona);
+        matrimonio = new VentanaMatrimonio();
+        gestionAutoridad = new VentanaGestionAutoridad();
+        crearAutoridad = new VentanaCrearAutoridad(controladorAutoridad);
     }
 
     /** This method is called from within the constructor to
