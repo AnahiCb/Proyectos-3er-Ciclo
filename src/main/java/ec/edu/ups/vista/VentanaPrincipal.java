@@ -28,32 +28,34 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
         menuBar = new javax.swing.JMenuBar();
         menuPrincipal = new javax.swing.JMenu();
-        openMenuItem = new javax.swing.JMenuItem();
-        saveMenuItem = new javax.swing.JMenuItem();
-        saveAsMenuItem = new javax.swing.JMenuItem();
+        crearAutoridadMenu = new javax.swing.JMenuItem();
+        iniciarSesionMenu = new javax.swing.JMenuItem();
+        cerrarSesionMenu = new javax.swing.JMenuItem();
         exitMenuItem = new javax.swing.JMenuItem();
         gestionMenu = new javax.swing.JMenu();
-        matrimonioMenuItem = new javax.swing.JMenuItem();
+        matrimonioMenu = new javax.swing.JMenuItem();
+        crearPersonaMenu = new javax.swing.JMenuItem();
+        jMenuItem2 = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         menuPrincipal.setMnemonic('f');
         menuPrincipal.setText("Menu Principal");
 
-        openMenuItem.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_P, java.awt.event.InputEvent.CTRL_MASK));
-        openMenuItem.setMnemonic('o');
-        openMenuItem.setText("Crear Persona");
-        menuPrincipal.add(openMenuItem);
+        crearAutoridadMenu.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_A, java.awt.event.InputEvent.CTRL_MASK));
+        crearAutoridadMenu.setMnemonic('o');
+        crearAutoridadMenu.setText("Crear Autoridad");
+        menuPrincipal.add(crearAutoridadMenu);
 
-        saveMenuItem.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_I, java.awt.event.InputEvent.CTRL_MASK));
-        saveMenuItem.setMnemonic('s');
-        saveMenuItem.setText("Iniciar Sesión");
-        menuPrincipal.add(saveMenuItem);
+        iniciarSesionMenu.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_I, java.awt.event.InputEvent.CTRL_MASK));
+        iniciarSesionMenu.setMnemonic('s');
+        iniciarSesionMenu.setText("Iniciar Sesión");
+        menuPrincipal.add(iniciarSesionMenu);
 
-        saveAsMenuItem.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_C, java.awt.event.InputEvent.CTRL_MASK));
-        saveAsMenuItem.setMnemonic('a');
-        saveAsMenuItem.setText("Cerrar Sesión ");
-        menuPrincipal.add(saveAsMenuItem);
+        cerrarSesionMenu.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_C, java.awt.event.InputEvent.CTRL_MASK));
+        cerrarSesionMenu.setMnemonic('a');
+        cerrarSesionMenu.setText("Cerrar Sesión ");
+        menuPrincipal.add(cerrarSesionMenu);
 
         exitMenuItem.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_ESCAPE, 0));
         exitMenuItem.setMnemonic('x');
@@ -70,10 +72,18 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         gestionMenu.setMnemonic('e');
         gestionMenu.setText("Gestionar");
 
-        matrimonioMenuItem.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_M, java.awt.event.InputEvent.CTRL_MASK));
-        matrimonioMenuItem.setMnemonic('t');
-        matrimonioMenuItem.setText("Matrimonio");
-        gestionMenu.add(matrimonioMenuItem);
+        matrimonioMenu.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_M, java.awt.event.InputEvent.CTRL_MASK));
+        matrimonioMenu.setMnemonic('t');
+        matrimonioMenu.setText("Matrimonio");
+        gestionMenu.add(matrimonioMenu);
+
+        crearPersonaMenu.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_P, java.awt.event.InputEvent.CTRL_MASK));
+        crearPersonaMenu.setText("Crear Persona");
+        gestionMenu.add(crearPersonaMenu);
+
+        jMenuItem2.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_G, java.awt.event.InputEvent.CTRL_MASK));
+        jMenuItem2.setText("Gestion Persona");
+        gestionMenu.add(jMenuItem2);
 
         menuBar.add(gestionMenu);
 
@@ -133,14 +143,16 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JMenuItem cerrarSesionMenu;
+    private javax.swing.JMenuItem crearAutoridadMenu;
+    private javax.swing.JMenuItem crearPersonaMenu;
     private javax.swing.JMenuItem exitMenuItem;
     private javax.swing.JMenu gestionMenu;
-    private javax.swing.JMenuItem matrimonioMenuItem;
+    private javax.swing.JMenuItem iniciarSesionMenu;
+    private javax.swing.JMenuItem jMenuItem2;
+    private javax.swing.JMenuItem matrimonioMenu;
     private javax.swing.JMenuBar menuBar;
     private javax.swing.JMenu menuPrincipal;
-    private javax.swing.JMenuItem openMenuItem;
-    private javax.swing.JMenuItem saveAsMenuItem;
-    private javax.swing.JMenuItem saveMenuItem;
     // End of variables declaration//GEN-END:variables
 
 }
