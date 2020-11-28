@@ -4,6 +4,11 @@
  * and open the template in the editor.
  */
 package ec.edu.ups.vista;
+import ec.edu.ups.controlador.ControladorMatrimonio;
+import ec.edu.ups.modelo.Matrimonio;
+import ec.edu.ups.modelo.Persona;
+import java.util.Iterator;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -11,11 +16,10 @@ package ec.edu.ups.vista;
  */
 public class VentanaListarMatrimonio extends javax.swing.JInternalFrame {
 
-    /**
-     * Creates new form VentanaListarMatrimonio
-     */
-    public VentanaListarMatrimonio() {
+    private ControladorMatrimonio controladorMatrimonio;
+    public VentanaListarMatrimonio(ControladorMatrimonio controladorMatrimonio) {
         initComponents();
+        this.controladorMatrimonio= controladorMatrimonio;
     }
 
     /**
@@ -27,21 +31,82 @@ public class VentanaListarMatrimonio extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jScrollPane1 = new javax.swing.JScrollPane();
+        tblRegistros = new javax.swing.JTable();
+
+        addInternalFrameListener(new javax.swing.event.InternalFrameListener() {
+            public void internalFrameActivated(javax.swing.event.InternalFrameEvent evt) {
+                formInternalFrameActivated(evt);
+            }
+            public void internalFrameClosed(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameClosing(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameDeactivated(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameDeiconified(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameIconified(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameOpened(javax.swing.event.InternalFrameEvent evt) {
+            }
+        });
+
+        tblRegistros.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane1.setViewportView(tblRegistros);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 394, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 385, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 274, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 283, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void formInternalFrameActivated(javax.swing.event.InternalFrameEvent evt) {//GEN-FIRST:event_formInternalFrameActivated
+        controladorMatrimonio.cargarDatos("C:\\Users\\LENOVO\\Desktop\\Universidad\\3er Ciclo\\Programacion Aplicada\\Prueba1_AnahiCabrera\\Datos");
+        DefaultTableModel modelo = (DefaultTableModel) tblRegistros.getModel();
+        modelo.setRowCount(0);
+        if(controladorMatrimonio.registros()!=null){
+         for (Iterator it = controladorMatrimonio.registros().iterator(); it.hasNext();) {
+            Matrimonio matrimonio = (Matrimonio) it.next();
+            Object[] rowData = {matrimonio.getCodigo(),matrimonio.getLugar(),matrimonio.getFecha().toString(),matrimonio.getContrayente1().getNombre()
+                    +" "+matrimonio.getContrayente1().getApellido(),matrimonio.getContrayente2().getNombre()+" "+matrimonio.getContrayente2().getApellido()
+                    , matrimonio.getTestigo1().getNombre().concat(matrimonio.getTestigo1().getApellido()),matrimonio.getTestigo2().getNombre()+" "+matrimonio.getTestigo2().getApellido(),matrimonio.getAutoridad().getNombre()
+                    +" "+matrimonio.getAutoridad().getApellido()};
+            modelo.addRow(rowData);
+            tblRegistros.setModel(modelo);
+        }
+        }else{
+            System.out.println("LISTA VACIA");
+        }
+    }//GEN-LAST:event_formInternalFrameActivated
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTable tblRegistros;
     // End of variables declaration//GEN-END:variables
 }
