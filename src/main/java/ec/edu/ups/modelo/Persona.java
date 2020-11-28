@@ -33,7 +33,9 @@ public class Persona {
         this.estadoCivil = estadoCivil;
     }
 
-    
+    public Persona(){
+        
+    }
 
     public String getNombre() {
         return nombre;

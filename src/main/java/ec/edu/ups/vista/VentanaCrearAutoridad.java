@@ -4,18 +4,36 @@
  * and open the template in the editor.
  */
 package ec.edu.ups.vista;
-
+import ec.edu.ups.controlador.ControladorAutoridadCivil;
+import ec.edu.ups.modelo.AutoridadCivil;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import javax.swing.JOptionPane;
 /**
  *
  * @author Anahi
  */
 public class VentanaCrearAutoridad extends javax.swing.JInternalFrame {
-
+    
+    ControladorAutoridadCivil controladorA;
     /**
      * Creates new form VentanaCrearAutoridad
      */
-    public VentanaCrearAutoridad() {
+    public VentanaCrearAutoridad(ControladorAutoridadCivil controladorA) {
         initComponents();
+        this.controladorA= controladorA;
+    }
+    public void Limpiar() {
+        txtID.setText("");
+        txtNombre.setText("");
+        txtApellido.setText("");
+        txtCargo.setText("");
+        txtEstadoC.setText("");
+        txtDireccion.setText("");
+        txtCorreo.setText("");
+        txtPwd.setText("");
+        
     }
 
     /**
@@ -37,8 +55,8 @@ public class VentanaCrearAutoridad extends javax.swing.JInternalFrame {
         jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        btnCrear = new javax.swing.JButton();
+        btnCancelar = new javax.swing.JButton();
         txtNombre = new javax.swing.JTextField();
         txtApellido = new javax.swing.JTextField();
         txtDireccion = new javax.swing.JTextField();
@@ -47,9 +65,9 @@ public class VentanaCrearAutoridad extends javax.swing.JInternalFrame {
         txtID = new javax.swing.JFormattedTextField();
         txtCargo = new javax.swing.JTextField();
         txtCorreo = new javax.swing.JTextField();
-        txtPwd = new javax.swing.JTextField();
         jLabel11 = new javax.swing.JLabel();
         cbxGenero = new javax.swing.JComboBox<>();
+        txtPwd = new javax.swing.JPasswordField();
 
         jLabel1.setText("Nombre:");
 
@@ -71,9 +89,19 @@ public class VentanaCrearAutoridad extends javax.swing.JInternalFrame {
 
         jLabel10.setText("Contraseña:");
 
-        jButton1.setText("Crear");
+        btnCrear.setText("Crear");
+        btnCrear.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCrearActionPerformed(evt);
+            }
+        });
 
-        jButton2.setText("Cancelar");
+        btnCancelar.setText("Cancelar");
+        btnCancelar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCancelarActionPerformed(evt);
+            }
+        });
 
         jLabel11.setText("Crear Autoridad");
 
@@ -117,13 +145,13 @@ public class VentanaCrearAutoridad extends javax.swing.JInternalFrame {
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                             .addComponent(txtFecha)
                                             .addComponent(txtCargo)
-                                            .addComponent(txtCorreo)
-                                            .addComponent(txtPwd, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                            .addComponent(txtCorreo)))
+                                    .addComponent(txtPwd, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(48, 48, 48)
-                                .addComponent(jButton1)
+                                .addComponent(btnCrear)
                                 .addGap(46, 46, 46)
-                                .addComponent(jButton2))))
+                                .addComponent(btnCancelar))))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(153, 153, 153)
                         .addComponent(jLabel11)))
@@ -171,24 +199,62 @@ public class VentanaCrearAutoridad extends javax.swing.JInternalFrame {
                     .addComponent(jLabel9)
                     .addComponent(txtCorreo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel10)
                     .addComponent(txtPwd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
-                    .addComponent(jButton2))
-                .addContainerGap(23, Short.MAX_VALUE))
+                    .addComponent(btnCrear)
+                    .addComponent(btnCancelar))
+                .addContainerGap(27, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
+        this.dispose();
+    }//GEN-LAST:event_btnCancelarActionPerformed
+
+    private void btnCrearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCrearActionPerformed
+        String pwd = "";
+        char[] pwd1 = txtPwd.getPassword();
+        for (int i = 0; i < pwd1.length; i++) {
+            pwd = pwd + pwd1[i];
+        }
+        SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
+        Date fecha = new Date();
+        try {
+            fecha = formato.parse(txtFecha.getText().trim());
+        } catch (ParseException ex) {
+            System.out.println(ex);
+        }
+
+        AutoridadCivil autoridad = new AutoridadCivil(txtCargo.getText().trim(),
+                txtCorreo.getText().trim(), pwd.trim(), txtID.getText().trim(), txtNombre.getText().trim(), txtApellido.getText().trim(),
+                txtDireccion.getText().trim(), cbxGenero.getSelectedItem().toString().trim(),
+                fecha,txtEstadoC.getText().trim(),"Autoridad");
+
+        System.out.println(autoridad);
+        if (controladorA.validar(autoridad)) {
+            controladorA.crear(autoridad);
+            JOptionPane.showMessageDialog(this, "Usuario creado con éxito");
+            Limpiar();
+            this.dispose();
+
+        } else {
+            JOptionPane.showMessageDialog(this, "Cédula Incorrecta");
+            Limpiar();
+        }
+        
+
+    }//GEN-LAST:event_btnCrearActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnCancelar;
+    private javax.swing.JButton btnCrear;
     private javax.swing.JComboBox<String> cbxGenero;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -208,6 +274,6 @@ public class VentanaCrearAutoridad extends javax.swing.JInternalFrame {
     private javax.swing.JTextField txtFecha;
     private javax.swing.JFormattedTextField txtID;
     private javax.swing.JTextField txtNombre;
-    private javax.swing.JTextField txtPwd;
+    private javax.swing.JPasswordField txtPwd;
     // End of variables declaration//GEN-END:variables
 }

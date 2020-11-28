@@ -93,5 +93,12 @@ public abstract class Controlador<E>{
         ObjectOutputStream datos = new ObjectOutputStream(archivo);
         datos.writeObject(listaGenerica);
     }
+    public List<E> getLista() {
+        return listaGenerica;
+    }
+
+    public void setLista(List<E> lista) {
+        this.listaGenerica= lista;
+    }
     
 }

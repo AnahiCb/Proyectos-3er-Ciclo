@@ -15,12 +15,16 @@ public class VentanaIniciarSesion extends javax.swing.JInternalFrame {
 
     private VentanaPrincipal ventanaPrincipal;
     private ControladorAutoridadCivil controladorAutoridad;
-    
-    public VentanaIniciarSesion() {
+
+   
+
+    /**
+     * Creates new form VentanaIniciarSesion
+     */
+    public VentanaIniciarSesion(VentanaPrincipal ventanaPrincipal,ControladorAutoridadCivil controladorAutoridad ) {
         initComponents();
-        this.ventanaPrincipal=ventanaPrincipal;
-        this.controladorAutoridad=controladorAutoridad;
-        
+       this.ventanaPrincipal=ventanaPrincipal;
+       this.controladorAutoridad= controladorAutoridad;
     }
 
     /**
@@ -35,10 +39,10 @@ public class VentanaIniciarSesion extends javax.swing.JInternalFrame {
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         txtCorreo = new javax.swing.JTextField();
-        txtPwd = new javax.swing.JTextField();
         btnIniciarS = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
+        txtPwd = new javax.swing.JPasswordField();
 
         jLabel1.setText("Correo Electrónico:");
 
@@ -92,10 +96,10 @@ public class VentanaIniciarSesion extends javax.swing.JInternalFrame {
                     .addComponent(jLabel1)
                     .addComponent(txtCorreo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
                     .addComponent(txtPwd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 35, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 39, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnIniciarS)
                     .addComponent(jButton2))
@@ -108,31 +112,31 @@ public class VentanaIniciarSesion extends javax.swing.JInternalFrame {
     private void btnIniciarSActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIniciarSActionPerformed
         String autoridad = txtCorreo.getText();
         String contrasenia = "";
-        char[] contrasenia1;
-        for (int i = 0; i < pass1.length; i++) {
-            pass = pass + pass1[i];
+        char[] contrasenia1 = txtPwd.getPassword();
+        for (int i = 0; i < contrasenia1.length; i++) {
+            contrasenia = contrasenia + contrasenia1[i];
         }
 
-        if (controladorUsuario.iniciarSesion(usuario, pass)) {
-            ventanaPrincipal.getBtnMenuIniciarSesion().setVisible(false);
-            ventanaPrincipal.getBtnCerrarSesionMenu().setVisible(true);
+        if (controladorAutoridad.iniciarSesion(autoridad, contrasenia)) {
+            ventanaPrincipal.getIniciarSesionMenu().setVisible(false);
+            ventanaPrincipal.getCerrarSesionMenu().setVisible(true);
             ventanaPrincipal.getGestionMenu().setVisible(true);
             
-            ventanaPrincipal.getBtnSalirMenu().setVisible(false);
-            ventanaPrincipal.getBtnRegistrarPersonaMenu().setVisible(false);
+            ventanaPrincipal.getSalirMenu().setVisible(false);
+            ventanaPrincipal.getGestionPesonaMenu().setVisible(false);
             ventanaPrincipal.getGestionMenu().setVisible(true);
 
             this.dispose();
-            JOptionPane.showMessageDialog(this, "Usted ha iniciado sesión con éxito");
+            JOptionPane.showMessageDialog(this, "Inicio de sesion exitoso");
         } else {
             
-            JOptionPane.showMessageDialog(this, "Datos incorrectos");
+            JOptionPane.showMessageDialog(this, "Usuario o contrasena incorrecta ");
             Limpiar();
         }
     }//GEN-LAST:event_btnIniciarSActionPerformed
     public void Limpiar() {
         txtCorreo.setText("");
-        txtPass.setText("");
+        txtPwd.setText("");
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -142,6 +146,6 @@ public class VentanaIniciarSesion extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JTextField txtCorreo;
-    private javax.swing.JTextField txtPwd;
+    private javax.swing.JPasswordField txtPwd;
     // End of variables declaration//GEN-END:variables
 }
