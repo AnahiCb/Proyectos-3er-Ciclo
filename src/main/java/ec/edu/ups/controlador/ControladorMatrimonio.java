@@ -7,6 +7,7 @@ package ec.edu.ups.controlador;
 
 import ec.edu.ups.modelo.Matrimonio;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 /**
@@ -43,5 +44,17 @@ public class ControladorMatrimonio extends Controlador<Matrimonio> {
             return 1;
         }       
     }
-    
+    public List<Matrimonio> registros() {
+
+        List<Matrimonio> listaM = new ArrayList();
+        Matrimonio matrimonio;
+        Iterator i = super.getLista().iterator();
+        while (i.hasNext()) {
+            matrimonio= (Matrimonio) i.next();
+            listaM.add(matrimonio);
+
+        }
+        return listaM;
+
+    }
 }

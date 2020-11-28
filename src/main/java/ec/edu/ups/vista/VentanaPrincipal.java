@@ -23,7 +23,6 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private VentanaGestionPersona ventanaGestionPersona;
     private VentanaMatrimonio ventanaMatrimonio;
     private VentanaCrearAutoridad ventanaCrearAutoridad;
-    private VentanaGestionAutoridad ventanaGestionAutoridad;
     
     private ControladorPersona controladorPersona;
     private ControladorAutoridadCivil controladorAutoridadCivil;
@@ -39,8 +38,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         
         ventanaIniciarSesion = new VentanaIniciarSesion(this,controladorAutoridadCivil);
         ventanaGestionPersona = new VentanaGestionPersona(controladorPersona);
-        ventanaMatrimonio = new VentanaMatrimonio();
-        ventanaGestionAutoridad = new VentanaGestionAutoridad();
+        ventanaMatrimonio = new VentanaMatrimonio(controladorPersona,controladorAutoridadCivil,controladorMatrimonio);
         ventanaCrearAutoridad = new VentanaCrearAutoridad(controladorAutoridadCivil);
         
     }
