@@ -17,12 +17,14 @@ public class AutoridadCivil extends Persona{
     private String correo;
     private String contrasenia;
 
-    public AutoridadCivil(String cargo, String correo, String contrasenia, String nombre, String apellido, String cedula, String direccion, String genero, Date fechaNacimiento) {
-        super(nombre, apellido, cedula, direccion, genero, fechaNacimiento);
+    public AutoridadCivil(String cargo, String correo, String contrasenia, String nombre, String apellido, String cedula, String direccion, String genero, Date fechaNacimiento, String tipo, String estadoCivil) {
+        super(nombre, apellido, cedula, direccion, genero, fechaNacimiento, tipo, estadoCivil);
         this.cargo = cargo;
         this.correo = correo;
         this.contrasenia = contrasenia;
-    }  
+    }
+
+    
 
     public String getCargo() {
         return cargo;
