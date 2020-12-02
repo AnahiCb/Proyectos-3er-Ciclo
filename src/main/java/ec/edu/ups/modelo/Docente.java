@@ -12,6 +12,7 @@ package ec.edu.ups.modelo;
 public class Docente extends Persona{
    
     private String profesion;
+    private Curso curso;
     private String correo;
     private String contrasenia;
 
@@ -22,6 +23,15 @@ public class Docente extends Persona{
         this.contrasenia = contrasenia;
     }
 
+    public Curso getCurso() {
+        return curso;
+    }
+
+    public void setCurso(Curso curso) {
+        this.curso = curso;
+    }
+    
+    
     public String getProfesion() {
         return profesion;
     }

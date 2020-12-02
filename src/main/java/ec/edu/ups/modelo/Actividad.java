@@ -5,27 +5,34 @@
  */
 package ec.edu.ups.modelo;
 
+import java.io.Serializable;
+
 /**
  *
  * @author Anahi
  */
-public class Actividad {
-     private int codigo;
-
+public class Actividad implements Serializable{
+    
+    private int codigo;
+    private Curso curso;
+    private String link;
     private String titulo;
-
     private String descripcion;
 
-    private String link;
-
-    private Curso curso;
-
-    public Actividad(int codigo, String titulo, String descripcion, String link, Curso curso) {
+    public Actividad(int codigo, Curso curso, String link, String titulo, String descripcion) {
         this.codigo = codigo;
+        this.curso = curso;
+        this.link = link;
         this.titulo = titulo;
         this.descripcion = descripcion;
-        this.link = link;
-        this.curso = curso;
+    }
+
+    public int getCodigo() {
+        return codigo;
+    }
+
+    public void setCodigo(int codigo) {
+        this.codigo = codigo;
     }
 
     public Curso getCurso() {
@@ -36,12 +43,12 @@ public class Actividad {
         this.curso = curso;
     }
 
-    public int getCodigo() {
-        return codigo;
+    public String getLink() {
+        return link;
     }
 
-    public void setCodigo(int codigo) {
-        this.codigo = codigo;
+    public void setLink(String link) {
+        this.link = link;
     }
 
     public String getTitulo() {
@@ -60,43 +67,11 @@ public class Actividad {
         this.descripcion = descripcion;
     }
 
-    public String getLink() {
-        return link;
-    }
-
-    public void setLink(String link) {
-        this.link = link;
-    }
-
-    @Override
-    public int hashCode() {
-        int hash = 5;
-        hash = 97 * hash + this.codigo;
-        return hash;
-    }
-
-    @Override
-    public boolean equals(Object obj) {
-        if (this == obj) {
-            return true;
-        }
-        if (obj == null) {
-            return false;
-        }
-        if (getClass() != obj.getClass()) {
-            return false;
-        }
-        final Actividad other = (Actividad) obj;
-        if (this.codigo != other.codigo) {
-            return false;
-        }
-        return true;
-    }
-
     @Override
     public String toString() {
-        return "Actividad{" + "codigo=" + codigo + ", titulo=" + titulo + ", descripcion=" + descripcion + ", link=" + link + ", curso=" + curso + '}';
+        return "Actividad{" + "codigo=" + codigo + ", curso=" + curso 
+                + ", link=" + link + ", titulo=" + titulo + ", descripcion=" + descripcion + '}';
     }
-
+    
     
 }

@@ -5,21 +5,19 @@
  */
 package ec.edu.ups.modelo;
 
+import java.io.Serializable;
 import java.util.Objects;
 
 /**
  *
  * @author Anahi
  */
-public class Persona {
+public class Persona implements Serializable {
+    
     private String cedula;
-
     private String nombre;
-
     private String apellido;
-
     private int edad;
-
     private String direccion;
 
     public Persona(String cedula, String nombre, String apellido, int edad, String direccion) {
@@ -98,7 +96,9 @@ public class Persona {
 
     @Override
     public String toString() {
-        return "Persona{" + "cedula=" + cedula + ", nombre=" + nombre + ", apellido=" + apellido + ", edad=" + edad + ", direccion=" + direccion + '}';
+        return "Persona{" + "cedula=" + cedula + ", nombre=" + nombre + 
+                ", apellido=" + apellido + ", edad=" + edad + ", direccion=" 
+                + direccion + '}';
     }
     
 }

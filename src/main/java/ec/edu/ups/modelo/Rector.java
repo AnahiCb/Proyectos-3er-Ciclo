@@ -10,12 +10,10 @@ package ec.edu.ups.modelo;
  * @author Anahi
  */
 public class Rector extends Persona{
+    
     private Docente docente;
-
     private String cargo;
-
     private String correo;
-
     private String contrasenia;
 
     public Rector(Docente docente, String cargo, String correo, String contrasenia, String cedula, String nombre, String apellido, int edad, String direccion) {
