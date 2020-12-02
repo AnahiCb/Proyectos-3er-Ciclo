@@ -22,7 +22,15 @@ public class Docente extends Persona{
         this.correo = correo;
         this.contrasenia = contrasenia;
     }
+    public Docente(String cedula, String nombre, String apellido, int edad, String direccion) {
+        super(cedula, nombre, apellido, edad, direccion);
+    }
 
+    public Docente(String profesion, String cedula, String nombre, String apellido, int edad, String direccion) {
+        super(cedula, nombre, apellido, edad, direccion);
+        this.profesion = profesion;
+    }
+    
     public Curso getCurso() {
         return curso;
     }

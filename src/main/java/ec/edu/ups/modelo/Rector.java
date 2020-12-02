@@ -5,24 +5,27 @@
  */
 package ec.edu.ups.modelo;
 
+import java.io.Serializable;
+
 /**
  *
  * @author Anahi
  */
-public class Rector extends Persona{
+public class Rector implements Serializable{
     
     private Docente docente;
     private String cargo;
     private String correo;
     private String contrasenia;
 
-    public Rector(Docente docente, String cargo, String correo, String contrasenia, String cedula, String nombre, String apellido, int edad, String direccion) {
-        super(cedula, nombre, apellido, edad, direccion);
+    public Rector(Docente docente, String cargo, String correo, String contrasenia) {
         this.docente = docente;
         this.cargo = cargo;
         this.correo = correo;
         this.contrasenia = contrasenia;
     }
+
+       
 
     public String getCargo() {
         return cargo;

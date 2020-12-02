@@ -3,9 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package ec.edu.ups.modelo.controlador;
+package ec.edu.ups.controlador;
 
-import ec.edu.ups.modelo.Alumno;
+import ec.edu.ups.modelo.Docente;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -14,22 +14,23 @@ import java.util.List;
  *
  * @author Anahi
  */
-public class ControladorAlumno extends Controlador<Alumno> {
+public class ControladorDocente extends Controlador<Docente> {
 
     private ControladorPersona controlador;
+    
 
-    public ControladorAlumno(ControladorPersona controlador, String ruta) {
+    public ControladorDocente(ControladorPersona controlador, String ruta) {
         super(ruta);
         this.controlador = controlador;
     }
-    public List<Alumno> alumnos() {
+    public List<Docente> docentes() {
 
-        List<Alumno> lista = new ArrayList();
-        Alumno alumno;
+        List<Docente> lista = new ArrayList();
+        Docente docente;
         Iterator i = super.getLista().iterator();
         while (i.hasNext()) {
-            alumno = (Alumno) i.next();
-            lista.add(alumno);
+            docente = (Docente) i.next();
+            lista.add(docente);
 
         }
         return lista;
@@ -37,8 +38,9 @@ public class ControladorAlumno extends Controlador<Alumno> {
     }
 
     @Override
-    public boolean validar(Alumno objeto) {
+    public boolean validar(Docente objeto) {
         return controlador.validar(objeto);
+
     }
 
     @Override
@@ -46,5 +48,6 @@ public class ControladorAlumno extends Controlador<Alumno> {
         return 0;
 
     }
+
     
 }

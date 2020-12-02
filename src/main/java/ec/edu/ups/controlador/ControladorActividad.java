@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package ec.edu.ups.modelo.controlador;
+package ec.edu.ups.controlador;
 
 import ec.edu.ups.modelo.Actividad;
 import java.util.ArrayList;
@@ -51,8 +51,12 @@ public class ControladorActividad extends Controlador<Actividad> {
     }
 
     public void ingresarRegex(String regex) {
-        patron = Pattern.compile(regex);
-    }
+        this.patron = Pattern.compile("<a\\shref=\\\"\\/store\\/apps\\/details\\?id="
+                + "(\\w+)(\\.(\\w+))+\\\"(\\s)?><div\\sclass=\\\""
+                + ""
+                + "((\\w+)\\s(\\w+))\\\"\\stitle=\\\"(\\w+|([.,\\/#!$%\\^&\\;:=-_\\s]))*\\\">");
+        
+        }
 
     public Set<String> obtenerUrl(String texto) {
 

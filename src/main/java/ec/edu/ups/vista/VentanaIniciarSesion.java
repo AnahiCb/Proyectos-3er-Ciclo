@@ -5,17 +5,32 @@
  */
 package ec.edu.ups.vista;
 
+import ec.edu.ups.controlador.*;
+import ec.edu.ups.modelo.*;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 /**
  *
  * @author Anahi
  */
 public class VentanaIniciarSesion extends javax.swing.JInternalFrame {
 
-    /**
-     * Creates new form VentanaIniciarSesion
-     */
-    public VentanaIniciarSesion() {
+    private String ruta = "datos/Registro.obj";
+    private VentanaPrincipal ventanaPrincipal;
+    private ControladorRector controladorRector;
+    
+    public VentanaIniciarSesion(VentanaPrincipal ventanaPrincipal, ControladorRector controladorRector) throws IOException {
         initComponents();
+
+        this.ventanaPrincipal = ventanaPrincipal;
+        this.controladorRector = controladorRector;
+        try {
+            controladorRector.cargarDatos();
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(VentanaIniciarSesion.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**
@@ -30,7 +45,7 @@ public class VentanaIniciarSesion extends javax.swing.JInternalFrame {
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        txtEmail = new javax.swing.JTextField();
         txtPwd = new javax.swing.JPasswordField();
         btnIniciarSesion = new javax.swing.JButton();
         btnCancelar = new javax.swing.JButton();
@@ -42,8 +57,18 @@ public class VentanaIniciarSesion extends javax.swing.JInternalFrame {
         jLabel3.setText("Contraseña:");
 
         btnIniciarSesion.setText("Iniciar Sesión");
+        btnIniciarSesion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnIniciarSesionActionPerformed(evt);
+            }
+        });
 
         btnCancelar.setText("Cancelar");
+        btnCancelar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCancelarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -58,7 +83,7 @@ public class VentanaIniciarSesion extends javax.swing.JInternalFrame {
                             .addComponent(jLabel3))
                         .addGap(52, 52, 52)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jTextField1)
+                            .addComponent(txtEmail)
                             .addComponent(txtPwd, javax.swing.GroupLayout.DEFAULT_SIZE, 134, Short.MAX_VALUE)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(142, 142, 142)
@@ -78,7 +103,7 @@ public class VentanaIniciarSesion extends javax.swing.JInternalFrame {
                 .addGap(30, 30, 30)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(34, 34, 34)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
@@ -93,6 +118,61 @@ public class VentanaIniciarSesion extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btnIniciarSesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIniciarSesionActionPerformed
+        String pass = "";
+        char[] pass1 = txtPwd.getPassword();
+        for (int i = 0; i < pass1.length; i++) {
+            pass = pass + pass1[i];
+        }
+
+        if (controladorRector.iniciarSesion(txtEmail.getText().trim(), pass)) {
+            ventanaPrincipal.getIniciarSesionMenu().setVisible(false);
+            ventanaPrincipal.getCerrarSesionMenu().setVisible(true);
+            if (controladorRector.getRector().getCargo().equals("admin")) {
+                ventanaPrincipal.getCursosMenu().setVisible(true);
+                ventanaPrincipal.getDocentesMenu().setVisible(true);
+                ventanaPrincipal.getGestionActiMenu().setVisible(false);
+                ventanaPrincipal.getGestionAlumnoMenu().setVisible(false);
+            } else {
+                ventanaPrincipal.getCursosMenu().setVisible(false);
+                ventanaPrincipal.getDocentesMenu().setVisible(false);
+                ventanaPrincipal.getGestionActiMenu().setVisible(true);
+                ventanaPrincipal.getGestionAlumnoMenu().setVisible(true);
+
+            }
+
+            this.dispose();
+            Limpiar();
+            JOptionPane.showMessageDialog(this, "Inicio de sesion exitoso");
+        } else {
+
+            JOptionPane.showMessageDialog(this, "Usuario o contrasena incorrecta ");
+            Limpiar();
+        }
+    }//GEN-LAST:event_btnIniciarSesionActionPerformed
+
+    private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
+        this.dispose();
+    }//GEN-LAST:event_btnCancelarActionPerformed
+    public void generarAdmin() {
+        Curso curso = new Curso(1, "RECTORADO", "RECTOR GENERAL");
+        Docente docente = new Docente("0102143344", "Edith", "Bermeo", 40, "Yanuncay");
+        docente.setCurso(curso);
+        Rector rector = new Rector(docente, "admin", "admin", "admin");
+        controladorRector.crear(rector);
+        System.out.println("ADMIN GENERADO CORRECTAMENTE");
+
+        try {
+            controladorRector.guardarDatos(ruta);
+        } catch (IOException ex) {
+            Logger.getLogger(VentanaIniciarSesion.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+    }
+    public void Limpiar() {
+        txtEmail.setText("");
+        txtPwd.setText("");
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCancelar;
@@ -100,7 +180,7 @@ public class VentanaIniciarSesion extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JTextField jTextField1;
+    private javax.swing.JTextField txtEmail;
     private javax.swing.JPasswordField txtPwd;
     // End of variables declaration//GEN-END:variables
 }

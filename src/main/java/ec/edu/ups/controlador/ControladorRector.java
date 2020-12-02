@@ -3,8 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package ec.edu.ups.modelo.controlador;
+package ec.edu.ups.controlador;
 
+import ec.edu.ups.modelo.Docente;
 import ec.edu.ups.modelo.Rector;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -69,7 +70,30 @@ public class ControladorRector extends Controlador<Rector> {
 
     }
 
-    
+    public Rector buscarRector(Docente docente) {
+        
+        for (Rector rec : super.getLista()) {
+            Rector r = (Rector) rec;
+            if (docente.equals(r.getDocente())) {
+                this.rector = r;
+                
+            }
+        }
+        return null;
+        
+    }
+    public boolean iniciarSesion(String correo, String pass) {
+        
+        for (Rector rec : super.getLista()) {
+            Rector r = (Rector) rec;
+            if (r.getCorreo().equals(correo) && r.getContrasenia().equals(pass)) {
+                this.rector = r;
+                return true;
+            }
+        }
+        return false;
+        
+    }
 
     
 }

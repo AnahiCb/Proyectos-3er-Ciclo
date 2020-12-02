@@ -16,6 +16,9 @@ public class Curso {
     private String nivel;
     private String seccion;
 
+    public Curso() {
+    }
+    
     public Curso(int codigo, String nivel, String seccion) {
         this.codigo = codigo;
         this.nivel = nivel;
