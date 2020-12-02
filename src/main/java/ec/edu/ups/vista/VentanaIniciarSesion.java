@@ -158,7 +158,7 @@ public class VentanaIniciarSesion extends javax.swing.JInternalFrame {
         Curso curso = new Curso(1, "RECTORADO", "RECTOR GENERAL");
         Docente docente = new Docente("0102143344", "Edith", "Bermeo", 40, "Yanuncay");
         docente.setCurso(curso);
-        Rector rector = new Rector(docente, "admin", "admin", "admin");
+        Rector rector = new Rector(docente, "admin", "usuario", "1234");
         controladorRector.crear(rector);
         System.out.println("ADMIN GENERADO CORRECTAMENTE");
 
