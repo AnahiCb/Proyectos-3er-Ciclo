@@ -18,7 +18,7 @@ import javax.swing.JTextArea;
 
 /**
  *
- * @author user
+ * @author Anahi
  */
 public class VentanaPrincipal extends javax.swing.JFrame {
 
